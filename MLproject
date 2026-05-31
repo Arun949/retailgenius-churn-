@@ -1,0 +1,21 @@
+name: retailgenius-churn
+
+conda_env: environment.yml
+
+entry_points:
+  prepare:
+    command: "python src/data/data_preparation.py"
+
+  features:
+    command: "python src/features/feature_engineering.py"
+
+  train:
+    parameters:
+      model_type: {type: string, default: "xgboost"}
+    command: "python src/models/train.py --model_type {model_type}"
+
+  infer:
+    parameters:
+      model_uri: {type: string}
+      input_path: {type: string}
+    command: "python src/models/inference.py --model_uri {model_uri} --input_path {input_path}"

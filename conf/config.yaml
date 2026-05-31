@@ -1,0 +1,29 @@
+data:
+  raw_path: "data/raw/E Commerce.xlsx"
+  processed_path: "data/processed/churn_features.csv"
+  churn_definition_days: 180   # customers inactive > 6 months = churned
+  test_size: 0.15
+  val_size: 0.15
+  random_state: 42
+
+features:
+  target_column: "Churn"
+  drop_columns:
+    - "CustomerID"
+
+model:
+  xgboost:
+    n_estimators: 200
+    max_depth: 5
+    learning_rate: 0.05
+    scale_pos_weight: 5   # handles class imbalance
+    random_state: 42
+  logistic_regression:
+    max_iter: 5000 
+    class_weight: "balanced"
+    random_state: 42
+
+mlflow:
+  experiment_name: "retailgenius-churn-prediction"
+  model_name: "churn-predictor"
+  tracking_uri: "mlruns"

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.DS_Store
+
+# Data (do not commit raw/processed data)
+data/raw/
+data/processed/
+
+# MLflow (large artifacts)
+mlruns/
+
+# Sphinx build output
+docs/_build/
+
+# Conda
+.conda/
+
+# IDE
+.vscode/
+.idea/
